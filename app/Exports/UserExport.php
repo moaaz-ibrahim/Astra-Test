@@ -25,6 +25,10 @@ class UserExport implements FromCollection,WithHeadings
     public function collection()
     {
         $columns = $this->data['columns'];
+        if (in_array('name', $columns)) {
+            $key = array_search('name', $columns);
+            $columns[$key] = 'full_name';
+        }
         $query = User::query();
         $rowsLimit = $this->data['rowsLimit'];
         if(count($columns)> 0)

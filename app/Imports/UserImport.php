@@ -66,8 +66,11 @@ class UserImport implements ToModel, WithStartRow, WithHeadingRow
                 }
                 $user['phone'] = $phone;
             }
-
-            return new User($user);
+            $userExsit= User::where('email',$user['email'])->first();
+            if(!$userExsit) {
+                return new User($user);
+            }
+            return ;
         } catch (\Exception $e) {
             dd($e);
         }

@@ -89,6 +89,7 @@
     </header>
 
     <main>
+        <p>Note : if the excel have users that already exist in the DB then the <span style="color: red">import users tool</span> will ignore those users and add only the new users!</p>
         <form action="{{ route('import') }}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="file">Choose file:</label>
@@ -101,7 +102,7 @@
             @csrf
                 <label for="columns">Select Columns:</label>
                 <select id="columns" name="columns[]" multiple>
-                    <option value="full_name">Name</option>
+                    <option value="name">Name</option>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                 </select>
